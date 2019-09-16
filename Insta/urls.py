@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from Insta.views import HelloWorld
+from Insta.views import HelloWorld, PostsView, PostDetailView
 
 urlpatterns = [
     path('', HelloWorld.as_view(), name='helloworld'),
+    path('posts/', PostsView.as_view(), name='posts'), #访问这个路径是用这个view
+    path('posts/<int:pk>/', PostDetailView.as_view(), name='post_detail'), #int为到时候提供的integer，把其当作primary key（id）用
 ]
